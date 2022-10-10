@@ -1,0 +1,36 @@
+# Features
+
+Zeilen
+
+- [ ] hinzufügen
+- [ ] entfernen
+- [ ] verschieben
+
+Kategorien
+
+- [ ] bearbeiten
+- [ ] hinzufügen
+- [ ] entfernen
+
+sonstiges
+
+- [ ] save in LocalStorage
+- [ ] Spalten sortieren
+- [ ] clean architecture
+
+Export/Import
+
+- [ ] JSON-Export
+- [ ] JSON-Import
+
+Design
+
+- [ ] decide on a lib (Bootstrap, Material etc.)
+- [ ] integrate lib
+
+Content
+
+- [ ] buffer
+- [ ] settings => rounding, currency, language
+- [ ] income + other outflows for money
+- [ ] explanations
