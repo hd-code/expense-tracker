@@ -42,3 +42,7 @@ td, th {
 .text-right {
     text-align: right;
 }
+
+.w-6em {
+    width: 6em;
+}
