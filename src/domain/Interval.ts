@@ -4,6 +4,7 @@ export const intervals = Object.freeze({
     4: "quartalsweise",
     6: "2-monatlich",
     12: "monatlich",
+    26: "2-wöchentlich",
     52: "wöchentlich",
     365.25: "täglich",
 });

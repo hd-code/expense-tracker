@@ -1,40 +1,45 @@
 import React from "react";
-import { Interval } from "./domain/Interval";
+import { Expense, expense as exp } from "./domain/Expenses";
 import { IntervalChooser } from "./ui/IntervalChooser";
 
-function exp(category: string, name: string, cost: number, interval: Interval) {
-    return { category, name, cost, interval };
-}
-
-const sampleExpenses = [
-    exp("Wohnung", "Miete warm", 300, 12),
-    exp("Wohnung", "Strom", 96 / 3, 12),
-    exp("Wohnung", "GEZ", 55.08 / 3, 4),
-    exp("Wohnung", "Internet", 45.99 / 3, 12),
+const sampleExpenses: Expense[] = [
     exp("Wohnung", "", 0, 12),
-    exp("Tiere", "Futter Schildkröte", 30, 2),
-    exp("Tiere", "Futter Schlange", 1, 52),
+    exp("Wohnung", "", 0, 12),
+    exp("Wohnung", "", 0, 12),
+    exp("Wohnung", "", 0, 12),
+    exp("Wohnung", "", 0, 12),
+    exp("Wohnung", "", 0, 12),
     exp("Tiere", "", 0, 12),
-    exp("Versicherungen", "Haftpflicht", 3.45, 12),
-    exp("Versicherungen", "Moped", 57, 1),
-    exp("Versicherungen", "E-Bike", 80, 1),
+    exp("Tiere", "", 0, 12),
+    exp("Tiere", "", 0, 12),
+    exp("Tiere", "", 0, 12),
+    exp("Tiere", "", 0, 12),
+    exp("Tiere", "", 0, 12),
     exp("Versicherungen", "", 0, 12),
-    exp("sonstiges", "Essen", 70, 12),
-    exp("sonstiges", "Essen gehen", 100, 12),
-    exp("sonstiges", "ÖPNV-Tickets", 10.5, 52),
+    exp("Versicherungen", "", 0, 12),
+    exp("Versicherungen", "", 0, 12),
+    exp("Versicherungen", "", 0, 12),
+    exp("Versicherungen", "", 0, 12),
+    exp("Versicherungen", "", 0, 12),
     exp("sonstiges", "", 0, 12),
-];
-
-const startExpenses = [
-    exp("Wohnung", "", 0, 12),
-    exp("Mobilität", "", 0, 12),
-    exp("Versicherungen", "", 0, 12),
-    exp("Internet, Handy, Streaming", "", 0, 12),
+    exp("sonstiges", "", 0, 12),
+    exp("sonstiges", "", 0, 12),
+    exp("sonstiges", "", 0, 12),
+    exp("sonstiges", "", 0, 12),
+    exp("sonstiges", "", 0, 12),
+    exp("sonstiges", "", 0, 12),
     exp("sonstiges", "", 0, 12),
 ];
 
 function App() {
-    const [expenses, setExpenses] = React.useState(sampleExpenses);
+    const [expenses, setExpenses] = React.useState(() => {
+        const expensesValue = window.localStorage.getItem("expenses");
+        if (expensesValue) {
+            const expensesLoaded: Expense[] = JSON.parse(expensesValue);
+            return expensesLoaded;
+        }
+        return sampleExpenses;
+    });
     const [settings, setSettings] = React.useState({ currency: "€" });
 
     // Save to LocalStorage on changes
@@ -42,21 +47,6 @@ function App() {
         window.localStorage.setItem("expenses", JSON.stringify(expenses));
         window.localStorage.setItem("settings", JSON.stringify(settings));
     }, [expenses, settings]);
-
-    // Load from LocalStorage
-    React.useEffect(() => {
-        const expensesValue = window.localStorage.getItem("expenses");
-        if (expensesValue) {
-            const expensesLoaded = JSON.parse(expensesValue);
-            setExpenses(expensesLoaded);
-        }
-
-        const settingsValue = window.localStorage.getItem("settings");
-        if (settingsValue) {
-            const settingsLoaded = JSON.parse(settingsValue);
-            setSettings(settingsLoaded);
-        }
-    }, []);
 
     const onChange = (
         ev: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
