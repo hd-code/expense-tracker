@@ -1,11 +1,10 @@
-*,
-h1 {
+@import-normalize;
+
+* {
     box-sizing: inherit;
     font-size: 1em;
     margin: 0;
 }
-
-@import-normalize;
 
 body {
     box-sizing: border-box;
@@ -16,18 +15,22 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
-}
+/* -------------------------------------------------------------------------- */
 
-.text-left {
-    text-align: left;
+.ta-c {
+    text-align: center;
 }
-.text-right {
-    text-align: right;
+.ta-e {
+    text-align: end;
+}
+.ta-s {
+    text-align: start;
 }
 
 .w-6em {
     width: 6em;
+}
+
+.whs-nw {
+    white-space: nowrap;
 }

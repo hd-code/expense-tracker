@@ -8,7 +8,7 @@ Zeilen
 
 Kategorien
 
-- [ ] bearbeiten
+- [x] bearbeiten
 - [ ] hinzufügen
 - [ ] entfernen
 
@@ -16,7 +16,7 @@ sonstiges
 
 - [ ] save in LocalStorage
 - [ ] Spalten sortieren
-- [ ] clean architecture
+- [x] clean architecture
 
 Export/Import
 
