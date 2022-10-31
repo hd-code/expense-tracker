@@ -1,7 +1,6 @@
+import { Expense } from "./domain";
+import { Table } from "./view/Table";
 import React from "react";
-import { Expense } from "./domain/Expense";
-import { useExpenses } from "./state/ExpensesState";
-import Table from "./ui/Table";
 
 const sampleExpenses: Expense[] = [
     { category: "Haus", name: "Miete", amount: "171,99", interval: 12 },
@@ -16,17 +15,30 @@ const sampleExpenses: Expense[] = [
     { category: "sonstiges", name: "Lebensmittel", amount: "40", interval: 52 },
 ];
 
-const App: React.FC = () => {
-    const {expenses, updateCell} = useExpenses(sampleExpenses);
+export const App: React.FC = () => {
+    const [expenses, setExpenses] = React.useState(() => {
+        const dataString = window.localStorage.getItem("expenses");
+        if (dataString) {
+            const data = JSON.parse(dataString);
+            // check data for validity
+            return data as Expense[];
+        }
+        return sampleExpenses;
+    });
+
+    React.useEffect(() => {
+        const data = JSON.stringify(expenses);
+        window.localStorage.setItem("expenses", data);
+    }, [expenses]);
+
     return (
         <>
             <h1>Lebenshaltungskosten</h1>
             <Table
                 expenses={expenses}
-                onChange={updateCell}
+                setExpenses={setExpenses}
                 interval={12}
             />
         </>
     );
 };
-export default App;

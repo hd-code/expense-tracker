@@ -8,7 +8,8 @@ export type Expense = {
 };
 
 export function parseAmount(amount: string): number {
-    return parseFloat(amount.replace(",", "."));
+    const float = parseFloat((""+amount).replace(",", "."));
+    return isNaN(float) ? 0 : float;
 }
 
 export function calcCost(expense: Expense, interval: Interval): number {

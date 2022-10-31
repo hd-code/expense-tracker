@@ -15,7 +15,15 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+input {
+    font: inherit;
+}
+
 /* -------------------------------------------------------------------------- */
+
+.fw-b {
+    font-weight: bold;
+}
 
 .ta-c {
     text-align: center;
