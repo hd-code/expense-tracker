@@ -1,25 +1,25 @@
-import { Expense, Interval } from "../domain";
+import React from "react";
+import { Expense, Settings } from "../domain";
 import { ExpensesState } from "./ExpensesState";
 import { TableBody } from "./TableBody";
 import { TableFooter } from "./TableFooter";
-import React from "react";
 
 interface TableProps {
     expenses: Expense[];
     setExpenses: React.Dispatch<Expense[]>;
-    interval: Interval;
+    settings: Settings;
 }
 
 export const Table: React.FC<TableProps> = ({
     expenses,
     setExpenses,
-    interval,
+    settings,
 }) => {
-    const state = new ExpensesState(expenses, setExpenses, interval);
+    const state = new ExpensesState(expenses, setExpenses, settings.interval);
     return (
         <table>
-            <TableBody state={state} />
-            <TableFooter state={state} />
+            <TableBody {...{ state, settings }} />
+            <TableFooter {...{ state, settings }} />
         </table>
     );
 };

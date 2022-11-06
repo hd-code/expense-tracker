@@ -6,6 +6,12 @@
     margin: 0;
 }
 
+html,
+body,
+#root {
+    height: 100%;
+}
+
 body {
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
@@ -21,8 +27,16 @@ input {
 
 /* -------------------------------------------------------------------------- */
 
+.d-f {
+    display: flex;
+}
+
 .fw-b {
     font-weight: bold;
+}
+
+.jc-c {
+    justify-content: center;
 }
 
 .ta-c {

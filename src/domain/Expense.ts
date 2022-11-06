@@ -8,7 +8,7 @@ export type Expense = {
 };
 
 export function parseAmount(amount: string): number {
-    const float = parseFloat((""+amount).replace(",", "."));
+    const float = parseFloat(("" + amount).replace(",", "."));
     return isNaN(float) ? 0 : float;
 }
 

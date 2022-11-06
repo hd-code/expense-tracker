@@ -1,6 +1,20 @@
-import { Expense } from "./domain";
-import { Table } from "./view/Table";
 import React from "react";
+import { Table } from "./view/Table";
+import { Expense, Settings } from "./domain";
+
+export const App: React.FC = () => {
+    const [expenses, setExpenses] = useLocalState("expenses", sampleExpenses);
+    const [settings, setSettings] = useLocalState("settings", defaultSettings);
+
+    return (
+        <div className="d-f jc-c">
+            <div>
+                <h1>Lebenshaltungskosten</h1>
+                <Table {...{ expenses, setExpenses, settings }} />
+            </div>
+        </div>
+    );
+};
 
 const sampleExpenses: Expense[] = [
     { category: "Haus", name: "Miete", amount: "171,99", interval: 12 },
@@ -15,30 +29,27 @@ const sampleExpenses: Expense[] = [
     { category: "sonstiges", name: "Lebensmittel", amount: "40", interval: 52 },
 ];
 
-export const App: React.FC = () => {
-    const [expenses, setExpenses] = React.useState(() => {
-        const dataString = window.localStorage.getItem("expenses");
+const defaultSettings: Settings = {
+    currency: "€",
+    decimals: 2,
+    interval: 12,
+};
+
+function useLocalState<T>(key: string, init: T): [T, React.Dispatch<T>] {
+    const [state, setState] = React.useState(() => {
+        const dataString = window.localStorage.getItem(key);
         if (dataString) {
             const data = JSON.parse(dataString);
             // check data for validity
-            return data as Expense[];
+            return data as T;
         }
-        return sampleExpenses;
+        return init;
     });
 
     React.useEffect(() => {
-        const data = JSON.stringify(expenses);
-        window.localStorage.setItem("expenses", data);
-    }, [expenses]);
+        const data = JSON.stringify(state);
+        window.localStorage.setItem(key, data);
+    }, [state]);
 
-    return (
-        <>
-            <h1>Lebenshaltungskosten</h1>
-            <Table
-                expenses={expenses}
-                setExpenses={setExpenses}
-                interval={12}
-            />
-        </>
-    );
-};
+    return [state, setState];
+}

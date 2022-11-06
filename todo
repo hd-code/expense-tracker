@@ -14,8 +14,8 @@ Kategorien
 
 sonstiges
 
-- [ ] save in LocalStorage
-- [ ] Spalten sortieren
+- [x] save in LocalStorage
+- [ ] Zeilen sortieren
 - [x] clean architecture
 
 Export/Import

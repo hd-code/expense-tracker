@@ -49,6 +49,7 @@
     ]
   },
   "prettier": {
+    "importOrder": ["../", "./"],
     "importOrderSortSpecifiers": true,
     "trailingComma": "all"
   }

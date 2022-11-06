@@ -1,11 +1,13 @@
 import { IntervalSelect } from "../components";
+import { Settings } from "../domain";
 import { ExpensesState, TableRow } from "./ExpensesState";
 
 interface TableBodyProps {
     state: ExpensesState;
+    settings: Settings;
 }
 
-export const TableBody: React.FC<TableBodyProps> = ({ state }) => {
+export const TableBody: React.FC<TableBodyProps> = ({ state, settings }) => {
     const onChange_: React.ChangeEventHandler<
         HTMLInputElement | HTMLSelectElement
     > = (event) => {
@@ -19,7 +21,11 @@ export const TableBody: React.FC<TableBodyProps> = ({ state }) => {
         <tbody>
             {state.tableRows.map((row, i) => (
                 <tr key={i}>
-                    <TableRow_ row={row} onChange={onChange_} />
+                    <TableRow_
+                        row={row}
+                        onChange={onChange_}
+                        settings={settings}
+                    />
                 </tr>
             ))}
         </tbody>
@@ -29,9 +35,10 @@ export const TableBody: React.FC<TableBodyProps> = ({ state }) => {
 type TableRowProps = {
     row: TableRow;
     onChange: React.ChangeEventHandler<HTMLInputElement | HTMLSelectElement>;
+    settings: Settings;
 };
 
-const TableRow_: React.FC<TableRowProps> = ({ row, onChange }) => {
+const TableRow_: React.FC<TableRowProps> = ({ row, onChange, settings }) => {
     if (row.type === "group") {
         return (
             <>
@@ -43,7 +50,9 @@ const TableRow_: React.FC<TableRowProps> = ({ row, onChange }) => {
                         onChange={onChange}
                     />
                 </th>
-                <th className="ta-e">{row.cost.toFixed(2)} €</th>
+                <th className="ta-e">
+                    {row.cost.toFixed(settings.decimals)} €
+                </th>
             </>
         );
     } else {
@@ -67,7 +76,7 @@ const TableRow_: React.FC<TableRowProps> = ({ row, onChange }) => {
                         placeholder="z.B. 19,99"
                         className="w-6em"
                     />
-                    €
+                    {settings.currency}
                 </td>
                 <td>
                     <IntervalSelect
@@ -76,7 +85,10 @@ const TableRow_: React.FC<TableRowProps> = ({ row, onChange }) => {
                         onChange={onChange}
                     />
                 </td>
-                <td className="ta-e whs-nw">{row.cost.toFixed(2)} €</td>
+                <td className="ta-e whs-nw">
+                    {row.cost.toFixed(settings.decimals)}
+                    {settings.currency}
+                </td>
             </>
         );
     }

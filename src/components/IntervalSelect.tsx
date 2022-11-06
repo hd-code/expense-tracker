@@ -1,5 +1,5 @@
-import { intervals } from "../domain/Interval";
 import React from "react";
+import { intervals } from "../domain/Interval";
 
 type SelectProps = React.DetailedHTMLProps<
     React.SelectHTMLAttributes<HTMLSelectElement>,

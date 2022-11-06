@@ -1,5 +1,5 @@
-import { Expense, Interval, calcCost } from "../domain";
 import { Dispatch } from "react";
+import { Expense, Interval, calcCost } from "../domain";
 
 export type TableRow = {
     type: "group" | "expense";
