@@ -22,13 +22,34 @@ body {
 }
 
 input {
+    background: inherit;
+    /* border: none; */
     font: inherit;
+}
+
+table {
+    border-collapse: collapse;
 }
 
 /* -------------------------------------------------------------------------- */
 
+.bdb-1px {
+    border-bottom: solid 1px;
+}
+.bdt-1px {
+    border-top: solid 1px;
+}
+
+.bgc-grey {
+    background-color: #ccc;
+}
+
 .d-f {
     display: flex;
+}
+
+.fs-150p {
+    font-size: 1.5em;
 }
 
 .fw-b {
@@ -39,18 +60,34 @@ input {
     justify-content: center;
 }
 
+.ovx-a {
+    overflow-x: auto;
+}
+
 .ta-c {
     text-align: center;
 }
 .ta-e {
     text-align: end;
 }
-.ta-s {
-    text-align: start;
+.ta-r {
+    text-align: right;
+}
+.ta-l {
+    text-align: left;
 }
 
+.w-3em {
+    width: 3em;
+}
 .w-6em {
     width: 6em;
+}
+.w-8em {
+    width: 8em;
+}
+.w-100p {
+    width: 100%;
 }
 
 .whs-nw {

@@ -50,6 +50,7 @@
   },
   "prettier": {
     "importOrder": ["../", "./"],
+    "importOrderGroupNamespaceSpecifiers": true,
     "importOrderSortSpecifiers": true,
     "trailingComma": "all"
   }

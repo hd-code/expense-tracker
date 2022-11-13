@@ -2,15 +2,15 @@
 
 Zeilen
 
-- [ ] hinzufügen
-- [ ] entfernen
+- [x] hinzufügen
+- [x] entfernen
 - [ ] verschieben
 
 Kategorien
 
 - [x] bearbeiten
-- [ ] hinzufügen
-- [ ] entfernen
+- [x] hinzufügen
+- [x] entfernen
 
 sonstiges
 
@@ -20,17 +20,12 @@ sonstiges
 
 Export/Import
 
-- [ ] JSON-Export
-- [ ] JSON-Import
-
-Design
-
-- [ ] decide on a lib (Bootstrap, Material etc.)
-- [ ] integrate lib
+- [x] JSON-Export
+- [x] JSON-Import
 
 Content
 
-- [ ] buffer
+- [x] buffer
 - [ ] settings => rounding, currency, language
 - [ ] income + other outflows for money
 - [ ] explanations
