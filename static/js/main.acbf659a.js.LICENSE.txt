@@ -1,3 +1,5 @@
+/*! domfiles v0.1.0 | MIT | https://github.com/hd-code/typescript-snippets */
+
 /**
  * @license React
  * react-dom.production.min.js
